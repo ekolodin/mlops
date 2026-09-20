@@ -14,5 +14,5 @@ py::array mac(const py::array& a, const py::array& b, const py::array& c) {
 
 PYBIND11_MODULE(_core, module) {
     module.doc() = "Elementwise operation on three 3D float64 arrays";
-    // TODO 2: expose mac(a, b, c). Do not allow implicit argument conversions.
+    module.def("mac", &mac, py::arg("a").noconvert(), py::arg("b").noconvert(), py::arg("c").noconvert());
 }
