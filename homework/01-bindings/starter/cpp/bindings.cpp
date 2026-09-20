@@ -3,6 +3,7 @@
 #include <pybind11/pybind11.h>
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace py = pybind11;
 
@@ -50,7 +51,20 @@ py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_aligned(a, "a");
     require_aligned(b, "b");
     require_aligned(c, "c");
-    throw std::logic_error("TODO 2: implement array binding");
+
+    std::vector<py::ssize_t> shape(3);
+    for (py::ssize_t i = 0; i < 3; i++) {
+        shape[i] = a.shape(i);
+    }
+    py::array_t<double> out(shape);
+    mac_kernel(
+        static_cast<const double*>(a.data()),
+        static_cast<const double*>(b.data()),
+        static_cast<const double*>(c.data()),
+        out.mutable_data(),
+        static_cast<std::size_t>(a.size())
+    );
+    return out;
 }
 
 PYBIND11_MODULE(_core, module) {
