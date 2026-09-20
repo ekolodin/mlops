@@ -12,10 +12,19 @@ static void require_float64(const py::array& value, const char* name) {
     }
 }
 
+static void require_3d(const py::array& value, const char* name) {
+    if (!(value.ndim() == 3)) {
+        throw py::value_error(std::string(name) + " must be 3-dimensional");
+    }
+}
+
 py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_float64(a, "a");
     require_float64(b, "b");
     require_float64(c, "c");
+    require_3d(a, "a");
+    require_3d(b, "b");
+    require_3d(c, "c");
     throw std::logic_error("TODO 2: implement array binding");
 }
 
