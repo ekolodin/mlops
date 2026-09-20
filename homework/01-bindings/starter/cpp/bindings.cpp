@@ -17,6 +17,13 @@ static void require_3d(const py::array& value, const char* name) {
         throw py::value_error(std::string(name) + " must be 3-dimensional");
     }
 }
+static void require_same_shape(const py::array& x, const py::array& y, const char* message) {
+    for (py::ssize_t i = 0; i < 3; i++) {
+        if (x.shape(i) != y.shape(i)) {
+            throw py::value_error(message);
+        }
+    }
+}
 
 py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_float64(a, "a");
@@ -25,6 +32,8 @@ py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_3d(a, "a");
     require_3d(b, "b");
     require_3d(c, "c");
+    require_same_shape(a, b, "a and b must have the same shape");
+    require_same_shape(a, c, "a and c must have the same shape");
     throw std::logic_error("TODO 2: implement array binding");
 }
 
