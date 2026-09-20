@@ -24,7 +24,17 @@ static void require_same_shape(const py::array& x, const py::array& y, const cha
         }
     }
 }
+static void require_c_contiguous(const py::array& value, const char* name) {
+    if (!(value.flags() & py::array::c_style)) {
+        throw py::value_error(std::string(name) + " must be C-contiguous");
+    }
+}
 
+static void require_aligned(const py::array& value, const char* name) {
+    if (!value.attr("flags").attr("aligned").cast<bool>()) {
+        throw py::value_error(std::string(name) + " must be aligned");
+    }
+}
 py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_float64(a, "a");
     require_float64(b, "b");
@@ -34,6 +44,12 @@ py::array mac(const py::array& a, const py::array& b, const py::array& c) {
     require_3d(c, "c");
     require_same_shape(a, b, "a and b must have the same shape");
     require_same_shape(a, c, "a and c must have the same shape");
+    require_c_contiguous(a, "a");
+    require_c_contiguous(b, "b");
+    require_c_contiguous(c, "c");
+    require_aligned(a, "a");
+    require_aligned(b, "b");
+    require_aligned(c, "c");
     throw std::logic_error("TODO 2: implement array binding");
 }
 
