@@ -20,6 +20,13 @@ def test_fortran_layout_is_rejected():
         mac(a, f, a)
 
 
+@pytest.mark.parametrize("shape", [(2, 3), (1, 2, 3, 4)])
+def test_same_wrong_rank_for_all_inputs_is_rejected(shape):
+    x = np.ones(shape)
+    with pytest.raises(ValueError):
+        mac(x, x, x)
+
+
 def test_same_object_for_all_inputs():
     x = np.array([[[1.0, 2.0, -3.0]]])
     snapshot = x.copy()
