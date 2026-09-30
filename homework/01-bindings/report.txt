@@ -1,3 +1,60 @@
+Команды сборки и запуска из чистого клона
+(Windows 11, Git Bash)
+git clone https://github.com/artenjoyer/mlops.git
+cd mlops
+git switch hw01
+cd homework/01-bindings
+py -3.13 -m venv .venv
+source .venv/Scripts/activate
+python -m pip install -r requirements-dev.txt
+python -m pip check
+python -m build starter --outdir starter/dist
+python -m pip install --force-reinstall starter/dist/*.whl
+python -m pip check
+python -c 'import tensor_ops; print(tensor_ops.__file__)'
+python -m pytest tests student_tests -q
+python -c 'from pathlib import Path; import hashlib; wheels = list(Path("starter/dist").glob("*.whl")); assert len(wheels) == 1, "Use a directory containing exactly one wheel"; p = wheels[0]; print(p.name, hashlib.sha256(p.read_bytes()).hexdigest())'
+
+Версии Python, компилятора, pybind11, scikit-build-core и NumPy; ОС и архитектуры
+ОС: Windows 11 (10.0.26200), архитектура x86_64 (тег wheel: win_amd64)
+Python: 3.13.15
+Компилятор: MSVC 19.51.36252.0 (Visual Studio 18 2026 Build Tools, Windows SDK 10.0.26100.0)
+pybind11: 3.1.0
+scikit-build-core: 1.0.3
+CMake: 4.4.3, Ninja: 1.13.2 (генератор при сборке: Visual Studio 18 2026)
+NumPy: 2.5.3
+build: 1.6.1, pytest: 9.1.1
+Флаг -march=native не использовался в сдаваемой сборке.
+
+Контракт функции tensor_ops.mac(a, b, c)
+- Возвращает out[i, j, k] = a[i, j, k] * b[i, j, k] + c[i, j, k]. Умножение поэлементное, не матричное; broadcasting запрещён.
+- Входы: три numpy.ndarray с dtype native-endian float64, 3 оси, одинаковые формы.
+- Память: входы должны быть C_CONTIGUOUS и ALIGNED; read-only входы допустимы.
+- Выход: новый C-contiguous массив float64 той же формы с собственным буфером. Входы не изменяются, память с ними не разделяется.
+- Пустые массивы (нулевая ось) допустимы: возвращается пустой массив той же формы, ядро к указателям не обращается. Проверки dtype, формы и layout для пустых входов тоже выполняются.
+- Ошибки: список, скаляр, неверный dtype или порядок байтов -> TypeError (неявного преобразования нет, у всех аргументов py::arg(...).noconvert()). Неверная форма, ndim или layout (не C-contiguous, не aligned) -> ValueError без падения интерпретатора.
+- Вычисление выполняется только в C++-ядре mac_kernel (cpp/kernel.cpp) одним плоским циклом по N элементам. Валидация, выделение результата и экспорт находятся в cpp/bindings.cpp.
+
+Build и runtime dependencies
+- Build: scikit-build-core==1.0.3, pybind11==3.1.0, cmake==4.4.3, ninja==1.13.2, компилятор C++17 (MSVC).
+- Runtime: numpy==2.5.3. Устанавливается автоматически при pip install wheel, что подтверждается его установкой в чистом env (Task #4): numpy 2.5.3 есть в pip list, хотя вручную не ставился.
+- pytest: нужен только проверяющему и в зависимости пакета не входит.
+- В env получателя нет build, scikit-build-core, pybind11, cmake и ninja; компилятор для установки готового wheel не нужен.
+
+Источники
+- README задания (homework/01-bindings/README.md) и пример example/
+- pybind11, NumPy: https://pybind11.readthedocs.io/en/stable/advanced/pycpp/numpy.html
+- pybind11, non-converting arguments: https://pybind11.readthedocs.io/en/stable/advanced/functions.html#non-converting-arguments
+- scikit-build-core, getting started: https://scikit-build-core.readthedocs.io/en/stable/guide/getting_started.html
+- NumPy, ndarray.flags: https://numpy.org/doc/stable/reference/generated/numpy.ndarray.flags.html
+
+Ограничения реализации
+- Поддерживаются только C-contiguous выровненные массивы float64 с native-endian порядком байтов; остальные входы отклоняются, а не преобразуются. Для подготовки входа можно явно вызвать np.require(x, dtype=np.float64, requirements=["C", "A"]).
+- Только 3D-массивы одинаковой формы, без broadcasting.
+- Без многопоточности и SIMD-оптимизаций, GIL не освобождается, т.к. ускорение относительно NumPy не являлось целью.
+- Поведение на NaN/inf и при переполнении специально не проверялось.
+- Wheel собран и проверен только для CPython 3.13, Windows x86_64 (cp313-cp313-win_amd64); для других ОС и версий Python его нужно собирать заново.
+
 Task #3
 $ python -m build starter --outdir starter/dist
 python -m pip install --force-reinstall starter/dist/*.whl
@@ -93,7 +150,6 @@ C:\Users\artru\homeworks_mag\prom_ml\mlops\homework\01-bindings\.venv\Lib\site-p
 (.venv) (base)
 
 Task #4
-mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl 6897539312cf490524e1ef5eea495128aa965b4393d092470d3848091e9ab852
 $ hw_root="$PWD"
 hw_receiver=$(mktemp -d)
 
@@ -151,12 +207,16 @@ Pygments         2.21.0
 pytest           9.1.1
 (.venv) (base)
 
+$ python -c 'from pathlib import Path; import hashlib; wheels = list(Path("starter/dist").glob("*.whl")); assert len(wheels) == 1, "Use a directory containing exactly one wheel"; p = wheels[0]; print(p.name, hashlib.sha256(p.read_bytes()).hexdigest())'
+mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl 8bb373a1d2031967b7b85be8537ae31a94c05c5211c0fe5e38466b75b12f1378
+(.venv) (base)
+
 Task #5
 Собственные тесты и проверка их эффективности
 
 В папку student_tests добавлено 7 тестов, покрывающих численные, негативные и граничные сценарии. Все они вызывают установленный wheel-пакет tensor_ops и проверяют результат независимо от реализации.
 
-Пойманная ошибка:
+Описание пойманной ошибки:
 Я внес дефект в реализацию C++ ядра (cpp/kernel.cpp), удалив слагаемое c[i] из формулы (строка стала: out[i] = a[i] * b[i];). После пересборки пакета и запуска python -m pytest tests student_tests -q тест test_known_values_on_nontrivial_shape успешно упал с AssertionError, показав расхождение между ожидаемым массивом и полученным результатом, что подтвердило работоспособность теста.
 
 После возврата правильной формулы (out[i] = a[i] * b[i] + c[i];) и повторной сборки все 47 тестов (включая 7 собственных) успешно прошли.
