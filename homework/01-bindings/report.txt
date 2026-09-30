@@ -1,0 +1,170 @@
+Task #3
+$ python -m build starter --outdir starter/dist
+python -m pip install --force-reinstall starter/dist/*.whl
+python -m pip check
+python -c 'import tensor_ops; print(tensor_ops.__file__)'
+python -m pytest tests -q
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - pybind11==3.1.0
+  - scikit-build-core==1.0.3
+* Getting build dependencies for sdist...
+* Installed build dependency versions:
+  - pybind11==3.1.0
+  - scikit-build-core==1.0.3
+* Building sdist...
+*** scikit-build-core 1.0.3 (sdist)
+* Building wheel from sdist
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - pybind11==3.1.0
+  - scikit-build-core==1.0.3
+* Getting build dependencies for wheel...
+* Installed build dependency versions:
+  - pybind11==3.1.0
+  - scikit-build-core==1.0.3
+* Building wheel...
+*** scikit-build-core 1.0.3 using CMake 4.4.3 (wheel)
+*** Configuring CMake...
+loading initial cache file C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\build\CMakeInit.txt
+-- Building for: Visual Studio 18 2026
+-- Selecting Windows SDK version 10.0.26100.0 to target Windows 10.0.26200.
+-- The CXX compiler identification is MSVC 19.51.36252.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python: C:/Users/artru/AppData/Local/Temp/build-env-_8lnpuz7/Scripts/python.exe (found version "3.13.15") found components: Interpreter Development.Module
+-- Performing Test HAS_MSVC_GL_LTCG
+-- Performing Test HAS_MSVC_GL_LTCG - Success
+-- Found pybind11: C:/Users/artru/AppData/Local/Temp/build-env-_8lnpuz7/Lib/site-packages/pybind11/include (found version "3.1.0")
+-- Configuring done (3.8s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/artru/AppData/Local/Temp/tmpn848j7pa/build
+*** Building project with Visual Studio 18 2026...
+Версия MSBuild 18.8.2+ce25c0108 для .NET Framework
+
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(561,5
+): warning MSB8029: Промежуточный каталог или каталог выхода не может располагаться во временном каталоге, потому что э
+то может стать причиной проблем с добавочной сборкой. [C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\build\ZERO_CHECK.v
+cxproj]
+  1>Checking Build System
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(561,5
+): warning MSB8029: Промежуточный каталог или каталог выхода не может располагаться во временном каталоге, потому что э
+то может стать причиной проблем с добавочной сборкой. [C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\build\_core.vcxpro
+j]
+  Building Custom Rule C:/Users/artru/AppData/Local/Temp/build-via-sdist-zrde9_3o/mlops_tensor_ops-0.1.0/CMakeLists.txt
+  bindings.cpp
+  kernel.cpp
+     Создается библиотека C:/Users/artru/AppData/Local/Temp/tmpn848j7pa/build/Release/_core.lib и объект C:/Users/artru
+  /AppData/Local/Temp/tmpn848j7pa/build/Release/_core.exp
+  Создание кода
+  Создание кода завершено
+  _core.vcxproj -> C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\build\Release\_core.cp313-win_amd64.pyd
+C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\MSBuild\Microsoft\VC\v180\Microsoft.CppBuild.targets(561,5
+): warning MSB8029: Промежуточный каталог или каталог выхода не может располагаться во временном каталоге, потому что э
+то может стать причиной проблем с добавочной сборкой. [C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\build\ALL_BUILD.vc
+xproj]
+  Building Custom Rule C:/Users/artru/AppData/Local/Temp/build-via-sdist-zrde9_3o/mlops_tensor_ops-0.1.0/CMakeLists.txt
+*** Installing project into wheel...
+-- Installing: C:\Users\artru\AppData\Local\Temp\tmpn848j7pa\wheel\platlib/tensor_ops/_core.cp313-win_amd64.pyd
+*** Making wheel...
+*** Created mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl
+Successfully built mlops_tensor_ops-0.1.0.tar.gz and mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl
+Processing .\starter\dist\mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl
+Collecting numpy==2.5.3 (from mlops-tensor-ops==0.1.0)
+  Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl (12.6 MB)
+Installing collected packages: numpy, mlops-tensor-ops
+  Attempting uninstall: numpy
+    Found existing installation: numpy 2.5.3
+    Uninstalling numpy-2.5.3:
+      Successfully uninstalled numpy-2.5.3
+  Attempting uninstall: mlops-tensor-ops
+    Found existing installation: mlops-tensor-ops 0.1.0
+    Uninstalling mlops-tensor-ops-0.1.0:
+      Successfully uninstalled mlops-tensor-ops-0.1.0
+Successfully installed mlops-tensor-ops-0.1.0 numpy-2.5.3
+No broken requirements found.
+C:\Users\artru\homeworks_mag\prom_ml\mlops\homework\01-bindings\.venv\Lib\site-packages\tensor_ops\__init__.py
+........................................                                                                         [100%]
+40 passed in 0.50s
+(.venv) (base)
+
+Task #4
+mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl 6897539312cf490524e1ef5eea495128aa965b4393d092470d3848091e9ab852
+$ hw_root="$PWD"
+hw_receiver=$(mktemp -d)
+
+py -3.13 -m venv "$hw_receiver/venv"
+
+env -u PYTHONPATH "$hw_receiver/venv/Scripts/python.exe" -m pip install pytest==9.1.1 "$hw_root"/starter/dist/*.whl
+
+cp -R tests student_tests "$hw_receiver/"
+
+(
+  cd "$hw_receiver"
+  env -u PYTHONPATH "$hw_receiver/venv/Scripts/python.exe" -m pip check
+  env -u PYTHONPATH "$hw_receiver/venv/Scripts/python.exe" -m pytest tests student_tests -q
+  env -u PYTHONPATH "$hw_receiver/venv/Scripts/python.exe" -c 'import tensor_ops._core as m; print(m.__file__)'
+  env -u PYTHONPATH "$hw_receiver/venv/Scripts/python.exe" -m pip list
+)
+Processing .\starter\dist\mlops_tensor_ops-0.1.0-cp313-cp313-win_amd64.whl
+Collecting pytest==9.1.1
+  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting numpy==2.5.3 (from mlops-tensor-ops==0.1.0)
+  Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Collecting colorama>=0.4 (from pytest==9.1.1)
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting iniconfig>=1.0.1 (from pytest==9.1.1)
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=22 (from pytest==9.1.1)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==9.1.1)
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==9.1.1)
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+Using cached numpy-2.5.3-cp313-cp313-win_amd64.whl (12.6 MB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Installing collected packages: pygments, pluggy, packaging, numpy, iniconfig, colorama, pytest, mlops-tensor-ops
+Successfully installed colorama-0.4.6 iniconfig-2.3.0 mlops-tensor-ops-0.1.0 numpy-2.5.3 packaging-26.3 pluggy-1.6.0 pygments-2.21.0 pytest-9.1.1
+No broken requirements found.
+...............................................                                                                  [100%]
+47 passed in 0.43s
+C:\Users\artru\AppData\Local\Temp\tmp.0AqukVIcUV\venv\Lib\site-packages\tensor_ops\_core.cp313-win_amd64.pyd
+Package          Version
+---------------- -------
+colorama         0.4.6
+iniconfig        2.3.0
+mlops-tensor-ops 0.1.0
+numpy            2.5.3
+packaging        26.3
+pip              26.2.1
+pluggy           1.6.0
+Pygments         2.21.0
+pytest           9.1.1
+(.venv) (base)
+
+Task #5
+Собственные тесты и проверка их эффективности
+
+В папку student_tests добавлено 7 тестов, покрывающих численные, негативные и граничные сценарии. Все они вызывают установленный wheel-пакет tensor_ops и проверяют результат независимо от реализации.
+
+Пойманная ошибка:
+Я внес дефект в реализацию C++ ядра (cpp/kernel.cpp), удалив слагаемое c[i] из формулы (строка стала: out[i] = a[i] * b[i];). После пересборки пакета и запуска python -m pytest tests student_tests -q тест test_known_values_on_nontrivial_shape успешно упал с AssertionError, показав расхождение между ожидаемым массивом и полученным результатом, что подтвердило работоспособность теста.
+
+После возврата правильной формулы (out[i] = a[i] * b[i] + c[i];) и повторной сборки все 47 тестов (включая 7 собственных) успешно прошли.
+
+Были добавлены тесты по следующим сценариям:
+
+Численный: test_known_values_on_nontrivial_shape: проверка точных значений на массивах формы (1, 3, 2).
+
+Негативные: test_fortran_layout_is_rejected, test_transposed_view_is_rejected, test_scalar_and_zero_dim_array_are_rejected: проверка отклонения неверных layout-ов, типов и размерностей с ожидаемыми исключениями (ValueError/TypeError).
+
+Память и границы: test_same_object_for_all_inputs (проверка отсутствия пересечения памяти между входом и выходом, а также неизменности входа), test_empty_inputs_with_wrong_dtype_are_still_rejected, test_empty_inputs_with_mismatched_shapes_are_rejected (проверка валидирования пустых массивов).
