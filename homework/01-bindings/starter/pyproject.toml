@@ -5,10 +5,12 @@ build-backend = "scikit_build_core.build"
 [project]
 name = "mlops-tensor-ops"
 version = "0.1.0"
-description = "TODO: describe your tensor operation and its contract"
+description = "C++ pybind11 extension for elementwise 3D tensor multiply-accumulate"
 requires-python = ">=3.13"
 # TODO 3: declare NumPy as a runtime dependency (course version: 2.5.3).
-dependencies = []
+dependencies = [
+    "numpy==2.5.3",
+]
 
 [tool.scikit-build]
 cmake.version = "==4.4.3"
