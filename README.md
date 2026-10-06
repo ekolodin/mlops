@@ -15,8 +15,9 @@ Python, Git и основами машинного обучения.
 | № | Тема | Материалы |
 |---|---|---|
 | 01 | [Основы MLOps и инструментарий](01-mlops-fundamentals/README.md) | [Слайды](01-mlops-fundamentals/slides/slides.pdf) · [Практика](01-mlops-fundamentals/practice/README.md) |
-| 02 | [Стандартизация кода и версионирование данных](02-code-and-data/README.md) | [Слайды: код и документация](02-code-and-data/slides/slides.pdf) · [Практика: качество кода и документация](02-code-and-data/practice/README.md) · [Слайды: хранение данных](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md) |
-| 03 | Трекинг экспериментов и мониторинг ML-систем | [Слайды: TensorBoard, W&B, MLflow, A/B-тесты, Prometheus и Grafana](04-experiment-tracking/slides/slides.pdf) |
+| 02 | [Стандартизация кода и документация](02-code-and-data/README.md) | [Слайды](02-code-and-data/slides/slides.pdf) · [Практика: качество кода и документация](02-code-and-data/practice/README.md) |
+| 03 | Хранение и версионирование данных | [Слайды](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md) |
+| 04 | Трекинг экспериментов и мониторинг ML-систем | [Слайды](04-experiment-tracking/slides/slides.pdf) |
 
 Дальнейшие темы будут добавляться постепенно.
 
