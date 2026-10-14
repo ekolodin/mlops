@@ -12,32 +12,38 @@ Python, Git и основами машинного обучения.
 
 ## Темы
 
-| № | Тема | Материалы |
-|---|---|---|
-| 01 | [Основы MLOps и инструментарий](01-mlops-fundamentals/README.md) | [Слайды](01-mlops-fundamentals/slides/slides.pdf) · [Практика](01-mlops-fundamentals/practice/README.md) |
-| 02 | [Стандартизация кода и документация](02-code-and-data/README.md) | [Слайды](02-code-and-data/slides/slides.pdf) · [Практика: качество кода и документация](02-code-and-data/practice/README.md) |
-| 03 | [Хранение и версионирование данных](03-data-storage/README.md) | [Слайды](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md) |
-| 04 | [Трекинг экспериментов и мониторинг ML-систем](04-experiment-tracking/README.md) | [Слайды](04-experiment-tracking/slides/slides.pdf) · [Практика: эксперименты и метрики](04-experiment-tracking/practice/README.md) |
-| 05 | [Автоматизация и масштабирование ML-процессов](05-automation-scaling/README.md) | [Слайды](05-automation-scaling/slides/slides.pdf) |
+
+| №   | Тема                                                                             | Материалы                                                                                                                          |
+| --- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| 01  | [Основы MLOps и инструментарий](01-mlops-fundamentals/README.md)                 | [Слайды](01-mlops-fundamentals/slides/slides.pdf) · [Практика](01-mlops-fundamentals/practice/README.md)                           |
+| 02  | [Стандартизация кода и документация](02-code-and-data/README.md)                 | [Слайды](02-code-and-data/slides/slides.pdf) · [Практика: качество кода и документация](02-code-and-data/practice/README.md)       |
+| 03  | [Хранение и версионирование данных](03-data-storage/README.md)                   | [Слайды](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md)                  |
+| 04  | [Трекинг экспериментов и мониторинг ML-систем](04-experiment-tracking/README.md) | [Слайды](04-experiment-tracking/slides/slides.pdf) · [Практика: эксперименты и метрики](04-experiment-tracking/practice/README.md) |
+| 05  | [Автоматизация и масштабирование ML-процессов](05-automation-scaling/README.md)  | [Слайды](05-automation-scaling/slides/slides.pdf)                                                                                  |
+
 
 Дальнейшие темы будут добавляться постепенно.
 
 ## Домашние задания
 
-| № | Задание | Что закрепляем |
-|---|---|---|
-| 01 | [Python-пакет с C++-биндингами](homework/01-bindings/README.md) | pybind11, CMake, wheel, чистый env и тесты; 13 баллов |
 
-ДЗ-1 — отдельная работа после первой темы; для него нужны основы C++ и компилятор C++17.
+| №   | Задание                                                         | Что закрепляем                                        |
+| --- | --------------------------------------------------------------- | ----------------------------------------------------- |
+| 01  | [Python-пакет с C++-биндингами](homework/01-bindings/README.md) | pybind11, CMake, wheel, чистый env и тесты; 13 баллов |
 
-## Начало работы
 
-```bash
-git clone https://github.com/ekolodin/mlops.git
-cd mlops/01-mlops-fundamentals/practice
-```
+ДЗ-1 — отдельная работа после первой темы; для него нужны основы C++и компилятор C++17.
 
-Для первой практики следуйте [инструкции подготовки среды](01-mlops-fundamentals/practice/README.md#подготовка-до-занятия).
-Для второй — [инструкции в её README](02-code-and-data/practice/README.md#подготовка).
-Для практики версионирования данных — [подготовка к работе с DVC](03-data-storage/practice/README.md#подготовка).
-В практиках используется Python 3.13. Для каждой создавайте отдельный env.
+## Оценивание
+
+Итоговая оценка складывается из трёх домашних заданий и проекта.
+Максимум за курс — 10 баллов.
+
+
+| Работа    | Максимум в итоговой оценке |
+| --------- | -------------------------- |
+| ДЗ-1      | 2                          |
+| ДЗ-2      | 2                          |
+| ДЗ-3      | 2                          |
+| Проект    | 4                          |
+| **Всего** | **10**                     |
