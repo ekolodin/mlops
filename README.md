@@ -19,7 +19,7 @@ Python, Git и основами машинного обучения.
 | 02  | [Стандартизация кода и документация](02-code-and-data/README.md)                 | [Слайды](02-code-and-data/slides/slides.pdf) · [Практика: качество кода и документация](02-code-and-data/practice/README.md)       |
 | 03  | [Хранение и версионирование данных](03-data-storage/README.md)                   | [Слайды](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md)                  |
 | 04  | [Трекинг экспериментов и мониторинг ML-систем](04-experiment-tracking/README.md) | [Слайды](04-experiment-tracking/slides/slides.pdf) · [Практика: эксперименты и метрики](04-experiment-tracking/practice/README.md) |
-| 05  | [Автоматизация и масштабирование ML-процессов](05-automation-scaling/README.md)  | [Слайды](05-automation-scaling/slides/slides.pdf)                                                                                  |
+| 05  | [Автоматизация и масштабирование ML-процессов](05-automation-scaling/README.md)  | [Слайды](05-automation-scaling/slides/slides.pdf) · [Практика: Docker и Airflow](05-automation-scaling/practice/README.md)                                                                                  |
 
 
 Дальнейшие темы будут добавляться постепенно.
