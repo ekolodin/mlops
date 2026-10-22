@@ -1,0 +1,8 @@
+FROM apache/airflow:3.3.2-python3.13
+USER root
+RUN install -d -o airflow -g root -m 0775 /opt/airflow/state /work
+USER airflow
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir "apache-airflow==3.3.2" -r /tmp/requirements.txt && pip check
+COPY pipeline.py /opt/course/pipeline.py
+ENV PYTHONPATH=/opt/course
