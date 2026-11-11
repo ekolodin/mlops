@@ -20,6 +20,8 @@ Python, Git и основами машинного обучения.
 | 03  | [Хранение и версионирование данных](03-data-storage/README.md)                   | [Слайды](03-data-storage/slides/slides.pdf) · [Практика: версии данных и DVC](03-data-storage/practice/README.md)                  |
 | 04  | [Трекинг экспериментов и мониторинг ML-систем](04-experiment-tracking/README.md) | [Слайды](04-experiment-tracking/slides/slides.pdf) · [Практика: эксперименты и метрики](04-experiment-tracking/practice/README.md) |
 | 05  | [Автоматизация и масштабирование ML-процессов](05-automation-scaling/README.md)  | [Слайды](05-automation-scaling/slides/slides.pdf) · [Практика: Docker и Airflow](05-automation-scaling/practice/README.md)                                                                                  |
+| 06  | NVIDIA GPU и CUDA | [Слайды](06-nvidia-cuda/slides/slides.pdf) |
+| 07  | Интеграция и оптимизация с ONNX и TensorRT | [Слайды](07-onnx-tensorrt/slides/slides.pdf) |
 
 
 Дальнейшие темы будут добавляться постепенно.
@@ -42,7 +44,7 @@ Python, Git и основами машинного обучения.
 
 | Работа    | Максимум в итоговой оценке |
 | --------- | -------------------------- |
-| ДЗ-1      | 2                          |
+| [ДЗ-1](homework/01-bindings/README.md) | 2                          |
 | ДЗ-2      | 2                          |
 | ДЗ-3      | 2                          |
 | [Проект: сервис поиска похожих объектов](project/README.md) | 4                          |
