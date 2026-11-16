@@ -18,12 +18,30 @@ def train_model(train_df, validation_df):
         raise ValueError("Training and validation must each contain eligible rows")
     if train[PICKUP].max() >= validation[PICKUP].min():
         raise ValueError("Temporal split: validation must be strictly later than training")
+
+    # =========================================================================================
+    
     # TODO 2: создайте vectorizer = DictVectorizer с sparse=True.
     # Через prepare_features получите записи для train и validation.
     # Определите x_train и x_validation: fit_transform только на train,
     # transform — на validation. Создайте model = LinearRegression
     # и обучите её на x_train и train.duration.to_numpy().
-    raise NotImplementedError("Exercise 2: vectorize features and train model")
+
+    vectorizer = DictVectorizer(sparse=True)
+
+    train_records = prepare_features(train)
+    validation_records = prepare_features(validation)
+
+    x_train = vectorizer.fit_transform(train_records)
+    x_validation = vectorizer.transform(validation_records)
+
+    y_train = train.duration.to_numpy()
+
+    model = LinearRegression()
+    model.fit(x_train, y_train)
+
+    # =========================================================================================
+
     bundle = {"format_version": 1, "features": list(FEATURES), "vectorizer": vectorizer,
               "model": model, "sklearn_version": sklearn.__version__}
     metrics = {
@@ -41,12 +59,26 @@ def train_model(train_df, validation_df):
 
 
 def predict(bundle, frame):
+    # =========================================================================================
+
     # TODO 3: получите records через prepare_features(frame).
     # Для пустого списка верните пустой NumPy-массив с dtype=float.
     # Получите features через transform обученного bundle["vectorizer"],
     # затем result через predict модели из bundle и np.asarray(..., dtype=float).
     # Не вызывайте fit, не требуйте target, сохраняйте число и порядок строк.
-    raise NotImplementedError("Exercise 3: prepare requests and predict")
+
+    records = prepare_features(frame)
+
+    if not records:
+        return np.array([], dtype=float)
+
+    vectorizer = bundle["vectorizer"]
+    model = bundle["model"]
+
+    features = vectorizer.transform(records)
+    result = np.asarray(model.predict(features), dtype=float)
+
+    # =========================================================================================
     if result.shape != (len(frame),) or not np.isfinite(result).all():
         raise ValueError("Model returned invalid predictions")
     return result
