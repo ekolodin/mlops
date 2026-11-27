@@ -1,0 +1,24 @@
+FROM python:3.13-slim AS builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends g++ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+
+COPY requirements-dev.txt .
+RUN python -m pip install --no-cache-dir -r requirements-dev.txt
+
+COPY starter/ ./starter/
+RUN python -m build starter --outdir /wheels
+
+FROM python:3.13-slim AS runtime
+
+WORKDIR /verify
+
+COPY --from=builder /wheels/*.whl /wheels/
+
+RUN python -m pip install --no-cache-dir pytest==9.1.1 /wheels/*.whl
+
+COPY tests/ ./tests/
+COPY student_tests/ ./student_tests/
+
+CMD ["sh", "-c", "python -m pip check && python -m pytest tests student_tests -q && python -c 'import tensor_ops._core as m; print(m.__file__)' && python -m pip list"]
