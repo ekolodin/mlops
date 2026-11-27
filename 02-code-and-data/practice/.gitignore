@@ -1,0 +1,4 @@
+.ruff_cache/
+docs/_build/
+artifacts-before/
+artifacts-after/

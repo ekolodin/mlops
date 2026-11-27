@@ -1,0 +1,12 @@
+{
+  "dataset": "Titanic",
+  "source_url": "https://storage.mds.yandex.net/get-devtools-opensource/233854/titanic.tar.gz",
+  "source_member": "train.csv",
+  "source_sha256": "7d118fef8b6ccf7f81111877bc388536f7b1e498a655e3d649d19aaa010e9f6f",
+  "preparation": "prepare_data.py from topic 03: shuffle with pandas random_state=42; reserve first 178 rows as external test; keep remaining 713 rows",
+  "file": "train.csv",
+  "rows": 713,
+  "sha256": "f3902f9e5872428626babb29433b7dd9c94c32aadffff0f384c7efbd8db81011",
+  "external_test_included": false,
+  "training_split": {"random_state": 42, "stratify": "Survived", "validation_fraction": 0.2, "train_rows": 570, "validation_rows": 143}
+}

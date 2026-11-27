@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.pytest_cache/
+work/
+backup/
+artifacts/
+data/raw/
+remote-storage/
+catboost_info/
+.DS_Store

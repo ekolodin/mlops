@@ -1,0 +1,24 @@
+[project]
+name = "titanic-dvc-seminar"
+version = "0.1.0"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "catboost>=1.2.8,<2",
+    "dvc>=3.67,<4",
+    "numpy>=2,<3",
+    "pandas>=2.2,<3",
+    "scikit-learn>=1.6,<2",
+]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.uv]
+package = false
+# Newer cryptography wheels omit Intel macOS; avoid a Rust build in class.
+constraint-dependencies = [
+    "cryptography==46.0.7; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

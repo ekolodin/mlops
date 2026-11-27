@@ -1,0 +1,10 @@
+apiVersion: 1
+providers:
+  - name: course
+    folder: MLOps
+    type: file
+    disableDeletion: true
+    allowUiUpdates: true
+    updateIntervalSeconds: 3600
+    options:
+      path: ${COURSE_DASHBOARDS_DIR}

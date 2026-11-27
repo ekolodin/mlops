@@ -1,0 +1,5 @@
+{
+  "cats": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/coco_sample.png",
+  "bee": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/bee.jpg",
+  "candy": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/p-blog/candy.JPG"
+}

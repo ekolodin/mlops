@@ -1,0 +1,25 @@
+[
+  {
+    "case_id": "cats-default",
+    "image": "images/cats.jpg",
+    "image_sha256": "03e3947df1ec190bbcc1f3cf47e56a5b60f9415be1ba072d1837d49380538b5c"
+  },
+  {
+    "case_id": "bee-24",
+    "image": "images/bee.jpg",
+    "image_sha256": "819c4825b32253c13b84d8105c0b7ea689b5efe837f354fa212844199c0c83bc",
+    "max_new_tokens": 24
+  },
+  {
+    "case_id": "candy-24",
+    "image": "images/candy.jpg",
+    "image_sha256": "99cc4f5acf82f5f8a00654abae4aad3cb1d8df173954df612fdbf354869042aa",
+    "max_new_tokens": 24
+  },
+  {
+    "case_id": "cats-one-token",
+    "image": "images/cats.jpg",
+    "image_sha256": "03e3947df1ec190bbcc1f3cf47e56a5b60f9415be1ba072d1837d49380538b5c",
+    "max_new_tokens": 1
+  }
+]

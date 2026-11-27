@@ -1,0 +1,14 @@
+# Пути считаются от корня Git-репозитория, не от папки этого YAML.
+files: ^02-code-and-data/practice/
+repos:
+  - repo: local
+    hooks:
+      - id: check-yaml
+        name: YAML syntax
+        entry: python -m pre_commit_hooks.check_yaml
+        language: system
+        types: [yaml]
+      # TODO 4: добавьте ruff-check, затем ruff-format.
+      # Область Python hooks: ^02-code-and-data/practice/(src|tests)/.*\.py$
+      # Для обоих: language: system, types: [python].
+      # pre-commit сам передаёт подходящие имена файлов в конец entry.

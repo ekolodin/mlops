@@ -1,0 +1,24 @@
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile.airflow
+    command: standalone
+    environment:
+      AIRFLOW_HOME: /opt/airflow/state
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__CORE__SIMPLE_AUTH_MANAGER_ALL_ADMINS: "true"
+      AIRFLOW__CORE__DAG_RUN_CONF_OVERRIDES_PARAMS: "true"
+      AIRFLOW__DAG_PROCESSOR__REFRESH_INTERVAL: "5"
+      AIRFLOW__DAG_PROCESSOR__MIN_FILE_PROCESS_INTERVAL: "5"
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./dags:/opt/airflow/dags:ro
+      - ./data:/data:ro
+      - airflow-state:/opt/airflow/state
+      - artifacts:/work
+volumes:
+  airflow-state:
+  artifacts:
